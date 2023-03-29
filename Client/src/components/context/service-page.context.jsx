@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 
 
 export const ServicePageContext = createContext()
@@ -11,7 +11,7 @@ export const ServicePageProvider = ({ children }) => {
     const [region, setRegion] = useState(null)
     const [currentRating, setCurrentRating] = useState(0);
     const [desiredRating, setDesiredRating] = useState(0);
-    const [checked, setChecked] = useState({});
+    const [optionsChecked, setOptionsChecked] = useState([]);
     const [wowClass, setWowClass] = useState(null)
     const [classIcon, setClassIcon] = useState(null)
     const [spec, setSpec] = useState(null)
@@ -22,12 +22,6 @@ export const ServicePageProvider = ({ children }) => {
     const [boosterString, setBoosterString] = useState('')
     const [notes, setNotes] = useState('')
 
-    useEffect(() => {
-        setHours(hours)
-        setOptionsTotalValue(optionsTotalValue)
-    }, [hours, optionsTotalValue])
-
-
     const value = {
         hours, setHours,
         optionsTotalValue, setOptionsTotalValue,
@@ -36,7 +30,7 @@ export const ServicePageProvider = ({ children }) => {
         region, setRegion,
         currentRating, setCurrentRating,
         desiredRating, setDesiredRating,
-        checked, setChecked,
+        optionsChecked, setOptionsChecked,
         wowClass, setWowClass,
         spec, setSpec,
         message, setMessage,

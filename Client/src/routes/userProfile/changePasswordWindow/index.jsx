@@ -168,9 +168,7 @@ const ChangePassordWindow = () => {
                         <CustomButton
                             otherProps={'p-1'}
                             gray={true}
-                            hover={true}
                             disabled={isProcessing}
-                           
                         >
                             {isProcessing ? <VscLoading className='animate-spin' /> : 'Change Password'}
                         </CustomButton>

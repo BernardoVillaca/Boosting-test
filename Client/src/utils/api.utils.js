@@ -3,7 +3,7 @@ import { getUserIdToken } from './firebase.utils'
 
 
 export const manualSync = async () => {
-    const response = await axios.post('http://localhost:5000/noname-c54d3/us-central1/app/manual-sync') 
+    const response = await axios.post('http://localhost:5000/noname-c54d3/us-central1/app/manual-sync')
     console.log(response.data)
 
 }
@@ -18,6 +18,7 @@ export const verifyCurrentUserClaims = async (currentUser) => {
     )
     return response.data
 }
+
 
 export const verifyTokenById = async (id) => {
     if (!id) return

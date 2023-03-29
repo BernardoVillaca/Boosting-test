@@ -104,7 +104,6 @@ const SignInForm = () => {
             </form>
             <CustomButton
                 gray={true}
-                hover={true}
                 otherProps={'flex place-content-center items-center w-full h-8'}
                 onClick={signInWithGoogle}
             >

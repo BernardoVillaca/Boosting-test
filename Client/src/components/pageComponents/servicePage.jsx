@@ -37,14 +37,13 @@ const ServicePage = () => {
           <>
             <LeftContainer />
             <MiddleContainer >
-              <div className='flex flex-col h-full  place-content-between '>
+              <div className='flex flex-col h-full space-y-8 '>
                 <Title text={serviceName} />
                 <div className='flex flex-col space-y-4 text-yellowish/white'>
                   {description?.map((item, index) =>
                     <p key={index}>{item}</p>
                   )}
                 </div>
-
               </div>
             </MiddleContainer>
             <RightContainer>

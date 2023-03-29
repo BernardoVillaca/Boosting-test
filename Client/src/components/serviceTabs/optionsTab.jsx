@@ -1,25 +1,31 @@
-import React from 'react'
-import { useState } from 'react'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { ServicePageContext } from '../context/service-page.context'
 import ServiceTabContainer from './serviceTabContainer'
 
 const OptionsTab = ({ service }) => {
   const { serviceOptions } = service;
 
-  const { checked, setChecked, setOptionsTotalValue } = useContext(ServicePageContext)
+  const { optionsChecked, setOptionsChecked, setOptionsTotalValue } = useContext(ServicePageContext)
 
   const handleCheck = (event) => {
-    var updatedList = { ...checked };
-    if (event.target.checked) {
-      updatedList = { ...checked, [event.target.name]: +event.target.value };
-    } else {
-      updatedList = { ...checked, [event.target.name]: 0 };
-    }
-    setChecked(updatedList);
-
-    let sum = Object.values(updatedList).reduce((a, b) => a + b, 0)
-    setOptionsTotalValue(sum)
+    const isChecked = event.target.checked;
+    const optionData = {
+      optionName: event.target.name,
+      optionPrice: event.target.value,
+    };
+  
+    let updatedList = isChecked
+      ? [...optionsChecked, optionData]
+      : optionsChecked.filter((item) => item.optionName !== event.target.name);
+  
+    setOptionsChecked(updatedList);
+  
+    // Calculate the total value and update the state
+    const totalValue = updatedList.reduce(
+      (sum, option) => sum + parseFloat(option.optionPrice),
+      0
+    );
+    setOptionsTotalValue(totalValue);
   };
 
   return (
@@ -38,7 +44,7 @@ const OptionsTab = ({ service }) => {
               </input>
               <span className='text-secondary/gray'>{item.optionName}</span>
             </div>
-            <span className='text-sm text-secondary/gray ml-5'>{item.optionPrice == 0 ? 'free!' : `$${item.optionPrice.toFixed(2)}`}</span>
+            <span className='text-sm text-secondary/gray ml-5'>{item.optionPrice == 0 ? 'free!' : null}</span>
           </div>
         )}
       </div>

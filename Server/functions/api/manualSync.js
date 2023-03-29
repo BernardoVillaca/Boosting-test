@@ -20,4 +20,4 @@ async function manualSync() {
   }
 }
 
-module.exports = { manualSync };
+module.exports =  manualSync ;

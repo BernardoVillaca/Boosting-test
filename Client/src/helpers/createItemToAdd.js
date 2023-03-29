@@ -3,7 +3,7 @@
 export function createItemToAdd(
     id, serviceName, serviceImage, hours,
     region, notes, resourceAmount, startRating,
-    coachLvl, checked, currentRating,
+    coachLvl, optionsChecked, currentRating,
     desiredRating, wowClass, spec, classIcon,
     faction, boosterString, finalPrice) {
 
@@ -13,7 +13,6 @@ export function createItemToAdd(
         price: finalPrice,
         serviceImage: serviceImage,
     };
-
     const serviceInfo = {
         customerRole: {
             class: wowClass,
@@ -25,7 +24,7 @@ export function createItemToAdd(
     if (region) serviceInfo.region = region;
     if (faction) serviceInfo.faction = faction;
     if (boosterString) serviceInfo.boosterRequested = boosterString;
-    if (checked) serviceInfo.extraOptionsSelected = checked;
+    if (optionsChecked.length !== 0) serviceInfo.extraOptionsSelected = optionsChecked;
     if (coachLvl) serviceInfo.coachLvl = coachLvl;
     if (resourceAmount !== 0) serviceInfo.resourceAmount = resourceAmount;
     if (desiredRating !== 0) {

@@ -1,29 +1,36 @@
-const crypto = require('crypto');
-
-function metadaStrings(cartItems) {
-    let descriptionArray = [];
-    let orderIdArray = [];
-
-    cartItems.forEach((item) => {
-        const {name, serviceInfo} = item
-        const {region, coachLvl, currentRating, desiredRating, hoursAmount} = serviceInfo
-        const id = crypto.randomBytes(8).toString("hex");
-        descriptionArray.push([
-            `${name} ${region} ${coachLvl} ${currentRating}-${desiredRating} ${hoursAmount >= 1 ? `${hoursAmount} hour(s)` : null}`
-        ])
-        orderIdArray.push([
-            `${name.charAt(0)}${region.charAt(0)}${coachLvl.charAt(0)}${id}`
-        ])
-    })
-
-    const descriptionString = descriptionArray.toString().replace(',', ' // ').replaceAll('null', '')
-    const orderIdString = orderIdArray.toString().replace(',', ' // ')
-
-    return {
-        descriptionString,
-        orderIdString
-    }
-
+function createMetadataString(elements) {
+    return elements
+        .filter(element => element !== undefined && element !== null)
+        .join(' ');
 }
 
-module.exports = metadaStrings;
+function metadataStrings(cartItems) {
+    let descriptionArray = [];
+
+    cartItems.forEach((item) => {
+        const { name, serviceInfo } = item;
+        const { region, coachLvl, currentRating, desiredRating, hours, resourceAmount, extraOptionsSelected, startRating } = serviceInfo;
+        
+        const optionsNamesList = extraOptionsSelected?.map((option) => option.optionName);
+        const optionsNamesString = optionsNamesList ? '(' + optionsNamesList.join(', ') + ')' : '';
+
+        descriptionArray.push(
+            createMetadataString([
+                name,
+                region,
+                coachLvl?.coachLvlName,
+                desiredRating && `${desiredRating}-${currentRating}`,
+                hours,
+                resourceAmount,
+                extraOptionsSelected && optionsNamesString,
+                startRating
+            ])
+        );
+    });
+
+    const descriptionString = descriptionArray.join(' // ').replaceAll('null', '');
+
+    return descriptionString;
+}
+
+module.exports = metadataStrings;

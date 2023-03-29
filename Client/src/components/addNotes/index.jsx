@@ -26,7 +26,6 @@ const AddNotes = () => {
                 size={'w-[5.5rem] h-6 px-1'}
                 otherProps={`flex justify-between`}
                 gray={true}
-                hover={true}
                 onClick={handleClick}
             >
                 <span className={`text-xs pr-1`}
@@ -50,7 +49,7 @@ const AddNotes = () => {
                     <div className='flex h-8 place-content-end'>
                         <CustomButton
                             size={'w-12 h-6'}
-                            hover={true}
+                            gray={true}
                             onClick={handleClick}
                         >
                             Save

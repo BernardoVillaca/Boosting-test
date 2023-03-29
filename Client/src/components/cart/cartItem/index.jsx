@@ -10,13 +10,13 @@ const CartItem = ({ cartItem, orderPlaced }) => {
   const { region, currentRating, desiredRating, hours, extraOptionsSelected, coachLvl, customerRole, resourceAmount, startRating } = serviceInfo;
   const { classIcon, spec } = customerRole;
   const { removeItemFromCart } = useContext(AppContext);
-
+ console.log(cartItem)
 
   return (
     <div className='flex flex-col w-[27.4rem] border-b-[1px]  border-secondary/gray border-opacity-20 h-[8rem] text-white'>
       <div className='flex justify-between px-3 items-end h-1/4 items-top '>
         <span >{name}</span>
-        {resourceAmount && <span >{resourceAmount} points</span>}
+        {resourceAmount && <span >{resourceAmount}</span>}
         {hours && <span >{`${hours} ${hours == 1 ? 'hour' : 'hours'}`}</span>}
         {desiredRating && <span >{currentRating}-{desiredRating}</span>}
         {startRating && <span>{startRating}cr start</span>}
@@ -35,10 +35,10 @@ const CartItem = ({ cartItem, orderPlaced }) => {
             <div className='flex flex-col text-sm pl-3'>
               <li className="space-x-2">
                 {region && <span>{region}</span>}
-                {coachLvl && <span>{coachLvl} player</span>}
+                {coachLvl && <span>{coachLvl.coachLvlName} player</span>}
               </li>
-              {Object.keys(extraOptionsSelected).map((item, index) =>
-                <li key={index}>{item}</li>
+              {extraOptionsSelected?.map((item, index) =>
+                <li key={index}>{item.optionName}</li>
               )}
             </div>
             <div className='flex h-full flex-col items-end justify-end p-2'>
@@ -50,7 +50,6 @@ const CartItem = ({ cartItem, orderPlaced }) => {
                 gray={true}
                 size={'h-8 w-24'}
                 otherProps={'rounded-xl flex'}
-                hover={true}
                 onClick={() => removeItemFromCart(cartItem)}
                 disabled={orderPlaced}
               >

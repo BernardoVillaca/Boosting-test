@@ -5,6 +5,7 @@ import mastercard from '../../assets/payments/mastercard-ui-kit.svg'
 import discord from '../../assets/discord.svg'
 import Title from '../../components/pageComponents/title'
 
+
 const BottomSection = () => {
     return (
         <div className='flex h-[17rem] place-content-center justify-center space-x-4 p-4'>

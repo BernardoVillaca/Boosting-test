@@ -11,15 +11,15 @@ app.use(cors({
 
 exports.app = functions.https.onRequest(app);
 
-// app.post('/addAdminRole', async (req, res) => {
-//     const { currentUser } = req.body
+app.post('/addAdminRole', async (req, res) => {
+    const { currentUser } = req.body
 
-//     const user = await firebaseAdmin.auth().getUserByEmail(currentUser.email)
-//     await firebaseAdmin.auth().setCustomUserClaims(user.uid, {
-//         admin: true
-//     });
-//     res.status(200).json({ message: `Success! ${currentUser.email} has been made an admin` })
-// })
+    const user = await firebaseAdmin.auth().getUserByEmail(currentUser.email)
+    await firebaseAdmin.auth().setCustomUserClaims(user.uid, {
+        admin: true
+    });
+    res.status(200).json({ message: `Success! ${currentUser.email} has been made an admin` })
+})
 
 const paymentIntent = require('./api/payment-intent');
 const paymentSucceededWH = require('./api/payment-succeeded-wh');
@@ -31,7 +31,7 @@ const paypalWebhook = require('./api/paypal-webhook');
 const listServiceAsComplete = require('./api/list-service-as-complete');
 const verifyTokenById = require('./api/verify-token-by-id');
 const createUserDocFromAuth = require('./api/create-user-doc-from-auth');
-const { manualSync } = require('./api/manualSync');
+const manualSync = require('./api/manualSync');
 
 
 app.post('/manual-sync', manualSync)

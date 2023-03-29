@@ -50,10 +50,6 @@ const CheckoutPage = () => {
                                 <span>Order total:</span>
                                 <span className='text-3xl'>${cartTotalValue.toFixed(2)}</span>
                             </div>
-                            {/* <button className='w-24 h-24 bg-white' onClick={async () => {
-                                const id = await createPaypalOrder(cartItems, currentUser)
-                                console.log(id)
-                            }}></button> */}
                             {paypalClientId && cartCount !== 0 &&
                                 <PayPalScriptProvider options={{ "client-id": paypalClientId }}>
                                     <PayPalButtons

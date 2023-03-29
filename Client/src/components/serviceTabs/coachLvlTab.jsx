@@ -5,25 +5,22 @@ import { ServicePageContext } from '../context/service-page.context'
 import ServiceTabContainer from './serviceTabContainer';
 
 const CoachLvlTab = ({ service }) => {
-    const { coachLvls } = service || {}
-    const { setcoachLvlPrice, setcoachLvl, coachLvl } = useContext(ServicePageContext);
+    const { coachLvls } = service
+
+    const { setcoachLvl, coachLvl } = useContext(ServicePageContext);
+    useEffect(() => setcoachLvl(coachLvls[0]), [])
     
-    useEffect(() => setcoachLvl('R1'),[])
-   
     return (
         <ServiceTabContainer tabName={'CoachLvl'}>
             <div className='flex flex-col justify-center items-center space-y-1 '>
                 {coachLvls.map((item, index) =>
                     <CustomButton
-                        rounded={false}
+                        
                         children={item.coachLvlName}
-                        toggle={item.coachLvlName === coachLvl }
+                        toggle={item.coachLvlName === coachLvl?.coachLvlName}
                         key={index}
                         size={'w-[6.5rem] h-8'}
-                        onClick={() => {
-                            setcoachLvlPrice(item.coachLvlPrice)
-                            setcoachLvl(item.coachLvlName)
-                        }}
+                        onClick={() => setcoachLvl(item)}
                     >
                     </CustomButton>
                 )}

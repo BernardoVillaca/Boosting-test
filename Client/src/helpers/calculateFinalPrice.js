@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { ServicePageContext } from "../components/context/service-page.context"
 
-export function calculateFinalPrice(product) {
-    const { currentRating, desiredRating, optionsTotalValue, coachLvlPrice, hours, resourceAmount, startRating } = useContext(ServicePageContext)
-    const { ratingSlideBar, servicePrice, hoursSlideBar, resourceSlideBar, startRatingSlideBar } = product
-    const {startRatingPrice, startRatingMax} = startRatingSlideBar || {}
-    const {max} = resourceSlideBar || {}
+export function calculateFinalPrice(service) {
+    const { currentRating, desiredRating, optionsTotalValue, coachLvl, hours, resourceAmount, startRating } = useContext(ServicePageContext);
+    const { coachLvlPrice = 0 } = coachLvl || {};
+    const { ratingSlideBar, servicePrice, hoursSlideBar, resourceSlideBar, startRatingSlideBar } = service;
+    const { startRatingPrice, startRatingMax } = startRatingSlideBar || {};
+    const { max } = resourceSlideBar || {};
 
     if (ratingSlideBar) {
         const bandsArray = Object.values(ratingSlideBar?.bandsMap)
@@ -23,9 +24,9 @@ export function calculateFinalPrice(product) {
 
             if (bandMinimum < desiredRating && bandMaximum > currentRating) {
                 return (sumOfBands + bandPrice * (bandMaximum - bandMinimum))
-            } else {
-                return sumOfBands
             }
+            return sumOfBands
+
         }, servicePrice)
 
         price -= rankBandPrice * (currentRating - rankBandMinimum)
@@ -42,13 +43,13 @@ export function calculateFinalPrice(product) {
 
     }
 
-    if(resourceSlideBar){
-        if (resourceAmount < max/2) return resourceAmount * servicePrice + optionsTotalValue
+    if (resourceSlideBar) {
+        if (resourceAmount < max / 2) return resourceAmount * servicePrice + optionsTotalValue
         if (resourceAmount < max) return (resourceAmount * servicePrice + optionsTotalValue) * 0.95
         return (resourceAmount * servicePrice + optionsTotalValue) * 0.9
     }
 
-    if(startRatingSlideBar){
+    if (startRatingSlideBar) {
         return ((startRatingMax - startRating) * startRatingPrice + servicePrice) * (1 + (optionsTotalValue + coachLvlPrice) / 30)
     }
 

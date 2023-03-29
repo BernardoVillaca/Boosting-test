@@ -1,8 +1,4 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "functions": [
     {
       "source": "functions",
@@ -13,13 +9,9 @@
         "firebase-debug.log",
         "firebase-debug.*.log"
       ],
-      "predeploy": [  
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
       ]
     }
-  ],
-  "emulators": {
-     "functions": {
-      "port": "443"
-    }
- }
+  ]
 }

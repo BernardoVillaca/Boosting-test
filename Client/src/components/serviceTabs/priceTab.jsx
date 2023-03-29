@@ -10,14 +10,13 @@ import { createItemToAdd } from '../../helpers/createItemToAdd';
 const PriceTab = ({ service }) => {
     const {
         hours, region, notes, resourceAmount, startRating,
-        coachLvl, checked, currentRating,
+        coachLvl, optionsChecked, currentRating,
         desiredRating, wowClass, spec, classIcon,
         faction, boosterString, setMessage, message
     } = useContext(ServicePageContext);
     const { addItemToCart, cartItems } = useContext(AppContext);
-    
-    const { id, serviceName, serviceImage, resourceSlideBar } = service;
 
+    const { id, serviceName, serviceImage, resourceSlideBar } = service;
     const { max } = resourceSlideBar || {};
 
     const finalPrice = calculateFinalPrice(service).toFixed(2);
@@ -36,12 +35,12 @@ const PriceTab = ({ service }) => {
         };
 
         const itemToAdd = createItemToAdd(
-            id, serviceName, serviceImage, hours, 
+            id, serviceName, serviceImage, hours,
             region, notes, resourceAmount, startRating,
-            coachLvl, checked, currentRating,
+            coachLvl, optionsChecked, currentRating,
             desiredRating, wowClass, spec, classIcon,
             faction, boosterString, finalPrice);
-     
+
         if (cartItems.some(item => item.purchased_item_id === itemToAdd.purchased_item_id)) messageEffect('Item updated!!');
         addItemToCart(itemToAdd);
         return
