@@ -9,7 +9,7 @@ const FeaturedServices = () => {
   
   return (
     <div className='flex h-[18rem] flex-col w-full border-b-[1px] border-light-purple border-opacity-20 py-4 space-y-4'>
-      <h1 className='font-semibold text-white text-4xl '>Featured Services</h1>
+      <h1 className='font-semibold text-center md:px-0 text-white text-2xl md:text-3xl xl:text-4xl'>Featured Services</h1>
       {featuredServices && <Carousel initialArray={featuredServices} />}
     </div>
   )

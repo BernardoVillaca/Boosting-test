@@ -20,7 +20,7 @@ export const AppProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
   const [cartTotalValue, setCartTotalValue] = useState(0);
   const [searchedServices, setSearchedServices] = useState([]);
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   // about us menu
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   // reset password
@@ -65,7 +65,8 @@ export const AppProvider = ({ children }) => {
     passwordChangeEffect, setPasswordChangeEffect,
     userInfo, setUserInfo,
     searchedServices, setSearchedServices,
-    isMenuOpen, setIsMenuOpen
+    isMenuOpen, setIsMenuOpen,
+    isMobileMenuOpen, setIsMobileMenuOpen
   };
 
 

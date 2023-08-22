@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-const TextSliceButton = ({ text, slice }) => {
+const TextSliceButton = ({ text }) => {
     const [effect, setEffect] = useState(false)
 
     return (
-        <div className='relative flex'>
+        <div className='relative flex w-full px-3 '>
             {effect &&
                 <span
                     className='absolute text-xs left-20 -top-2'
@@ -13,15 +13,15 @@ const TextSliceButton = ({ text, slice }) => {
                 </span>}
             {text &&
                 <button
-                    className={`${effect && "animate-textToGreen"} underline text-primary/purple hover:text-white`}
+                    className={`${effect && "animate-textToGreen"} underline truncate w-full text-primary/purple hover:text-white`}
                     onClick={() => {
                         navigator.clipboard.writeText(text)
                         setEffect(true);
                     }}
                     onAnimationEnd={() => setEffect(false)}
                 >
-                    {text.length <= slice ? text : `${text.slice('', slice)}...`}
-                </button>
+                    <span className='truncate'>{text}</span>
+                 </button>
             }
         </div>
     )

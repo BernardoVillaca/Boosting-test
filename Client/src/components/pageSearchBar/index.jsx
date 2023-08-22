@@ -32,7 +32,7 @@ const PageSearchBar = ({ services, setSearchResults }) => {
     }
 
     return (
-        <div className='flex items-center'>
+        <div className='flex items-center pl-14  lg:pl-12  2xl:pl-0'>
             <form
                 className='flex justify-between items-center h-8 w-56 rounded-xl bg-primary/black p-2'
                 onSubmit={handleSubmit}

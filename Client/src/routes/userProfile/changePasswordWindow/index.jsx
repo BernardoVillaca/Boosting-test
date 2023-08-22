@@ -98,7 +98,7 @@ const ChangePassordWindow = () => {
         const passwordsMatch = () => {
             if (newPassword === '') return setDoPasswordMatch(null)
             if (confirmPasswordDebouncedValue === '') return setDoPasswordMatch(null)
-            if (newPassword.length <= 8) return setNewPasswordError('password must have at least 8 characters')
+            if (newPassword.length <= 8) return setNewPasswordError('at least 8 characters')
             if (confirmPasswordDebouncedValue === newPassword) return setDoPasswordMatch(true)
             setConfirmPasswordError('passwords do not match')
             setDoPasswordMatch(false)
@@ -116,7 +116,7 @@ const ChangePassordWindow = () => {
                     document.body.style.overflow = ""
                 }}
             />
-            <div className='flex flex-col w-96 mb-[7rem] rounded-md bg-primary/black px-6 z-10'         >
+            <div className='flex flex-col rounded-md bg-primary/black px-6 z-10'         >
                 <div className='flex place-content-end w-full mb-3 pt-3 '>
                     <button
                         onClick={() => {
@@ -129,7 +129,7 @@ const ChangePassordWindow = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <ChangePWInput
-                        inputName={'Old password'}
+                        inputName={'Old password:'}
                         onChange={(e) => {
                             setOldPasswordError('')
                             setOldPassword(e.target.value)
@@ -141,7 +141,7 @@ const ChangePassordWindow = () => {
                         confirmation={isPasswordCorrect}
                     />
                     <ChangePWInput
-                        inputName={'New password'}
+                        inputName={'New password:'}
                         onChange={(e) => {
                             setNewPasswordError('')
                             setNewPassword(e.target.value)
@@ -153,7 +153,7 @@ const ChangePassordWindow = () => {
                         effect={newPasswordErrorEffect}
                     />
                     <ChangePWInput
-                        inputName={'Confirm password'}
+                        inputName={'Confirm password:'}
                         onChange={(e) => {
                             setConfirmPasswordError('')
                             setConfirmPassword(e.target.value)

@@ -17,51 +17,51 @@ import { useFetch } from '../../hooks/useFetch'
 const searchTabs = [
     {
         searchTabName: 'Service Id',
-        searchTabSize: 'w-1/4',
+        searchTabSize: 'w-1/4 text-xs md:text-sm lg:text-base 2xl:w-1/3',
         searctTabParams: 'service_id',
         searchDisabled: true
 
     },
     {
         searchTabName: 'Service Name',
-        searchTabSize: 'w-1/4',
+        searchTabSize: 'w-1/4 text-xs md:text-sm lg:text-base 2xl:w-1/3  ',
         searctTabParams: 'name'
+        
 
     },
     {
         searchTabName: 'Service Info',
-        searchTabSize: 'w-1/4',
+        searchTabSize: ' hidden 2xl:flex 2xl:w-1/3',
         searctTabParams: 'service-info',
         searchDisabled: true
 
     },
     {
         searchTabName: 'Price',
-        searchTabSize: 'w-48',
+        searchTabSize: 'w-1/4 text-xs md:text-sm lg:text-base 2xl:w-[12rem] ',
         searctTabParams: 'price'
 
     },
     {
         searchTabName: 'Purchased Date',
-        searchTabSize: 'w-[13rem]',
+        searchTabSize: ' xl:w-[15rem] hidden 2xl:flex',
         searctTabParams: 'servicePurchasedDate'
 
     },
     {
         searchTabName: 'Boosters Assigned',
-        searchTabSize: 'w-1/4',
+        searchTabSize: 'w-1/4 text-xs md:text-sm lg:text-base 2xl:w-[15.5rem]',
         searctTabParams: 'boostersAssigned',
         searchDisabled: true
 
     },
     {
         searchTabName: 'Status',
-        searchTabSize: 'w-[14rem]',
+        searchTabSize: ' w-[12rem] hidden 2xl:flex',
         searctTabParams: 'status'
 
     },
 ]
-
 
 const MyServicesPage = () => {
     const currentUser = useSelector(selectCurrentUser)
@@ -76,28 +76,27 @@ const MyServicesPage = () => {
 
     const fetchServices = useCallback(async () => {
         if (currentUser) {
-          const services = await getSubCollectionOrderedByfield({
-            collectionName: "users",
-            id: currentUser.uid,
-            subCollectionName: "services",
-            fieldName: searchParams.get("search"),
-            descendant: descendantSearch ? true : false,
-          });
-          console.log(services)
-          return services;
+            const services = await getSubCollectionOrderedByfield({
+                collectionName: "users",
+                id: currentUser.uid,
+                subCollectionName: "services",
+                fieldName: searchParams.get("search"),
+                descendant: descendantSearch ? true : false,
+            });
+            return services;
         }
-      }, [currentUser, searchParams, descendantSearch]);
-    
-      const services = useFetch({
+    }, [currentUser, searchParams, descendantSearch]);
+
+    const services = useFetch({
         key: ["services", currentUser?.uid, searchParams.get("search"), descendantSearch],
         fn: () => fetchServices(),
-      });
-    
-    
+    });
+
+
     return (
         <PageContainer image={textureBackground}>
             <LeftContainer />
-            <MiddleContainer otherProps={'space-y-8'}>
+            <MiddleContainer otherProps={'space-y-8 pl-14 md:pl-16 xl:pl-8 2xl:pl-0 pr-6 2xl:pr-0'}>
                 <Title text={'My services'} />
                 {/* orders container */}
                 <div className='flex flex-col w-full h-full bg-primary/black rounded-md'>
@@ -106,7 +105,7 @@ const MyServicesPage = () => {
                             <Link
                                 to={`/my-services?search=${item.searctTabParams}`}
                                 key={index}
-                                className={`
+                                className={` flex items-center px-1
                                     ${item.searchTabSize} 
                                     ${item.searchDisabled !== true ? 'text-primary/purple' : 'text-white'} 
                                     ${searchParams.get('search') === item.searctTabParams && 'underline'}

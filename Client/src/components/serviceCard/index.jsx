@@ -11,7 +11,7 @@ const ServiceCard = ({ item, small, otherProps }) => {
   return (
     <Link
       to={small ? `/${category}/${path}` : `${currentPath.pathname}/${path}`}
-      className={`flex group/container relative ${small ? 'w-[200px] h-[200px]' : 'w-64 h-64 m-2'} ${otherProps} text-white  rounded-lg overflow-hidden  space-x-2 space-y-1 items-end snap-end snap`}
+      className={`flex group/container relative ${small ? 'w-[200px] h-[200px]' : 'w-64 h-64 m-2'} ${otherProps} text-white  rounded-lg overflow-hidden  space-x-2 space-y-1 items-end snap-start snap`}
       style={{
         backgroundImage: `linear-gradient(30deg, rgba(30,27,29,0.95) 45%, rgba(30,27,29,0.05) 66%, rgba(30,27,29,0) 100%), url(${serviceImage})`,
         backgroundRepeat: 'no-repeat',

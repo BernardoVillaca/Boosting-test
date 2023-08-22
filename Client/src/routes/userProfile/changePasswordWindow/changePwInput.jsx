@@ -3,10 +3,10 @@ import { AiOutlineCheck } from "react-icons/ai";
 
 
 const ChangePWInput = ({ inputName, onChange, value, error, effect, confirmation }) => {
-    
+
     return (
-        <div className='flex flex-col w-full place-content-end h-16'>
-            <div className='relative flex justify-between pt-3 text-white'>
+        <div className='flex flex-col w-full place-content-end '>
+            <div className='relative flex flex-col md:flex-row md:space-x-4 justify-between md:pt-3 text-white'>
                 <span>{inputName}</span>
                 <input
                     className={`
@@ -20,9 +20,9 @@ const ChangePWInput = ({ inputName, onChange, value, error, effect, confirmation
                     onChange={onChange}
                     autoComplete="on"
                 />
-                {confirmation === true &&
+                {/* {confirmation === true &&
                     <AiOutlineCheck className='absolute right-2 top-4' color={'#49BF7C'} size={20} />
-                }
+                } */}
             </div>
             <div className='flex w-full h-8 place-content-end '>
                 {error !== '' && <span className='text-sm text-custom-red '>{error}</span>}

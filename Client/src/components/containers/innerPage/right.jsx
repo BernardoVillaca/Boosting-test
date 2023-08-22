@@ -1,11 +1,11 @@
 import React from 'react'
 const RightContainer = ({ children, logo }) => {
   return (
-    <div className='relative  w-1/5 h-full py-8 '>
+    <div className='relative  md:w-1/5 md:py-8'>
       {/* navbar filler */}
-      <div className='h-16 bg-transparent' />
+      <div className='hidden md:flex lg:h-16 bg-transparent' />
       {children}
-      {logo && <img className='absolute h-[20rem] w-[20rem] mb-[4.7rem] bottom-10 right-[3.3rem]' src={'/logos/icon-03.png'} />}
+      {logo && <img className='hidden absolute bottom-14 lg:flex items-end ' src={'/logos/icon-03.png'} />}
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 const LeftContainer = ({children}) => {
   return (
-    <div className='flex w-1/5 h-full items-end'>
+    <div className='hidden md:flex md:w-1/5 '>
         {children}
      
     </div>

@@ -13,7 +13,7 @@ const MyServicesItem = ({ serviceItem, searchTabs, boosterArea }) => {
             <div className='flex flex-row h-24'>
                 {/* service id */}
                 <div className={`flex ${searchTabs[0].searchTabSize} h-full border-x-[1px] border-secondary/gray border-opacity-20 text-center items-center place-content-center`}>
-                    <TextSliceButton text={service_id} slice={12}/>
+                    <TextSliceButton text={service_id} slice={12} />
                 </div>
                 {/* service */}
                 <div className={`flex ${searchTabs[1].searchTabSize} h-full border-r-[1px] border-secondary/gray border-opacity-20 items-center`}>
@@ -30,7 +30,7 @@ const MyServicesItem = ({ serviceItem, searchTabs, boosterArea }) => {
                             <span>{hoursAmount} hour(s)</span>
                         }
                     </div>
-                    <div className='flex flex-col px-2'>
+                    <div className='hidden 2xl:flex flex-col px-2 truncate'>
                         {extraOptionsSelected &&
                             Object.keys(extraOptionsSelected).map((item, index) =>
                                 <span key={index}>{item}</span>
@@ -39,7 +39,7 @@ const MyServicesItem = ({ serviceItem, searchTabs, boosterArea }) => {
                 </div>
                 {/* price */}
                 <div className={`flex ${searchTabs[3].searchTabSize} h-full items-center border-r-[1px] border-secondary/gray border-opacity-20`}>
-                    <span className='w-full text-center text-2xl'>${price?.toFixed(2)}</span>
+                    <span className='w-full text-center '>${price?.toFixed(2)}</span>
                 </div>
                 {/* purchased date */}
                 <div className={`flex h-full ${searchTabs[4].searchTabSize} border-r-[1px] border-secondary/gray border-opacity-20 place-content-center items-center`}>

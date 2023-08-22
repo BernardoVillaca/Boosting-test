@@ -104,15 +104,13 @@ const UserProfile = () => {
     return (
         <PageContainer image={textureBackground}>
             <LeftContainer />
-            <MiddleContainer center={true}>
-                <div className='flex flex-col w-full  items-center'>
-                    <div className='flex h-16 w-full place-content-center items-center'>
-                        {isEmailVerified === false && <VerifyEmail setIsEmailVerified={setIsEmailVerified} />}
-                    </div>
+            <MiddleContainer >
+                <div className='flex flex-col '>
                     {userInfo !== null &&
-                        <div className='grid w-96 rounded-md pt-4'>
+                        <div className='flex flex-col rounded-md pl-14 md:pl-16 lg:pl-24 2xl:pl-0  items-center md:items-start place-content-center  min-w-[20rem] max-w-lg '>
                             <Title text={'Profile'} />
-                            <div className='flex h-8 w-full items-center place-content-end'>
+                            <div className='flex flex-col space-y-4 '>
+                            <div className='flex h-8 items-center place-content-end w-full'>
                                 {isEditEnabled === false ? (
                                     <button
                                         className='flex rounded-md items-center px-1 bg-primary/black text-white'
@@ -142,63 +140,67 @@ const UserProfile = () => {
                                     </div>
                                 )}
                             </div>
-                            <UserProfileInput
-                                isEditEnabled={isEditEnabled}
-                                label={'Email'}
-                                error={emailError}
-                                initialValue={newEmail}
-                                onChange={(e) => setNewEmail(e.target.value)}
-                                onFocus={() => setEmailError(null)}
-                                effect={emailEffect}
-                                setEffect={setEmailEffect}
-                            />
-                            <UserProfileInput
-                                isEditEnabled={isEditEnabled}
-                                label={'Name'}
-                                error={nameError}
-                                initialValue={newName}
-                                onChange={(e) => setNewName(e.target.value)}
-                                onFocus={() => setNameError(null)}
-                                effect={nameEffect}
-                                setEffect={setNameEffect}
-                            />
-                            <UserProfileInput
-                                isEditEnabled={isEditEnabled}
-                                label={'Discord'}
-                                error={discordError}
-                                initialValue={newDiscord}
-                                onChange={(e) => setNewDiscord(e.target.value)}
-                                onFocus={() => setDiscordError(null)}
-                                effect={discordEffect}
-                                setEffect={setDiscordEffect}
-                            />
-                            <div className='flex w-full h-8 pl-3 items-center justify-between'>
-                                <span className='text-white'>Password:</span>
-                                <div className='w-48 flex flex-col items-start'>
-                                    <button
-                                        className={`h-8 rounded-md p-1 text-sm  ${isEditEnabled ? 'bg-gray-300 hover:bg-gray-200 border-[1px] text-black border-light-purple border-opacity-20' : 'text-white'}`}
-                                        disabled={currentUser?.providerData[0].providerId === 'google.com' || isEditEnabled === false}
-                                        onClick={() => {
-                                            setIsPasswordWindowOpen(true)
-                                            document.body.style.overflow = "hidden"
-                                        }}
-                                    >
-                                        {isEditEnabled ? 'Change password' : '**********'}
-                                    </button>
+                                <UserProfileInput
+                                    isEditEnabled={isEditEnabled}
+                                    label={'Email'}
+                                    error={emailError}
+                                    initialValue={newEmail}
+                                    onChange={(e) => setNewEmail(e.target.value)}
+                                    onFocus={() => setEmailError(null)}
+                                    effect={emailEffect}
+                                    setEffect={setEmailEffect}
+                                />
+                                <UserProfileInput
+                                    isEditEnabled={isEditEnabled}
+                                    label={'Name'}
+                                    error={nameError}
+                                    initialValue={newName}
+                                    onChange={(e) => setNewName(e.target.value)}
+                                    onFocus={() => setNameError(null)}
+                                    effect={nameEffect}
+                                    setEffect={setNameEffect}
+                                />
+                                <UserProfileInput
+                                    isEditEnabled={isEditEnabled}
+                                    label={'Discord'}
+                                    error={discordError}
+                                    initialValue={newDiscord}
+                                    onChange={(e) => setNewDiscord(e.target.value)}
+                                    onFocus={() => setDiscordError(null)}
+                                    effect={discordEffect}
+                                    setEffect={setDiscordEffect}
+                                />
+                                <div className='flex flex-col md:flex-row  md:justify-between '>
+                                    <span className='text-white '>Password:</span>
+                                    <div className=''>
+                                        <button
+                                            className={`flex sm:flex-col rounded-md p-1 text-sm  ${isEditEnabled ? 'bg-secondary/gray hover:bg-gray-200 border-[1px] text-black border-light-purple border-opacity-20' : 'text-white'}`}
+                                            disabled={currentUser?.providerData[0].providerId === 'google.com' || isEditEnabled === false}
+                                            onClick={() => {
+                                                setIsPasswordWindowOpen(true)
+                                                document.body.style.overflow = "hidden"
+                                            }}
+                                        >
+                                            {isEditEnabled ? 'Change password' : '**********'}
+                                        </button>
 
-                                    {currentUser?.providerData[0].providerId === 'google.com' &&
-                                        <span className='text-xs  text-gray-600'>User logged with google</span>
-                                    }
+                                        {currentUser?.providerData[0].providerId === 'google.com' &&
+                                            <span className='text-xs  text-gray-600'>User logged with google</span>
+                                        }
+                                    </div>
                                 </div>
 
                             </div>
-                            <div className='flex h-6 w-full place-content-center items-center'>
+                            <div className='flex w-full place-content-center items-center'>
                                 {passwordChangeEffect &&
                                     <span className='text-custom-green pt-2'>Password has been changed!!</span>
                                 }
                             </div>
                         </div>
                     }
+                    <div className='h-16 place-content-center items-center'>
+                        {isEmailVerified === false && <VerifyEmail setIsEmailVerified={setIsEmailVerified} />}
+                    </div>
                 </div>
             </MiddleContainer>
             <RightContainer logo={true} />

@@ -15,7 +15,7 @@ const Home = () => {
       <MiddleContainer>
         <HeroSection />
         <FeaturedServices />
-        <BottomSection/>
+        <BottomSection />
       </MiddleContainer>
       <RightContainer logo={true} />
     </PageContainer>

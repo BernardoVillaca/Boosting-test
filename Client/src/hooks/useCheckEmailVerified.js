@@ -4,7 +4,7 @@ import { selectCurrentUser } from "../../store/user/user.selector"
 import { reauthenticateUser } from "../firebase.utils"
 
 
-export const checkEmailVerified = () => {
+export const useCheckEmailVerified = () => {
     const currentUser = useSelector(selectCurrentUser)
 
     useEffect(() => {

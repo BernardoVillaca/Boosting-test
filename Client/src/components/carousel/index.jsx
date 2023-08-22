@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import ServiceCard from '../serviceCard';
+import { useResizeIcons } from '../../hooks/useResizeIcon';
+
+
 
 
 
@@ -9,6 +12,7 @@ const Carousel = ({ initialArray }) => {
     const [leftSlide, setLeftSlide] = useState(false)
     const [rightSlide, setRightSlide] = useState(false)
 
+    const iconsize = useResizeIcons(22, 30)
 
     const rightClickHandler = () => {
         if (leftSlide || rightSlide) return
@@ -40,29 +44,29 @@ const Carousel = ({ initialArray }) => {
     }, [featuredServicesArray])
 
     return (
-        <div className='flex items-center place-content-center w-full bg-transparent '>
+        <div className='flex items-center place-content-center w-full bg-transparent space-x-1 '>
             <button
-                className='flex w-12 h-12 bg-primary/black z-10 rounded-full place-content-center items-center border-[1px] border-secondary/gray border-opacity-20'
+                className='flex p-1 md:p-2 bg-primary/black z-10 rounded-full place-content-center items-center border-[1px] border-secondary/gray border-opacity-20'
                 onClick={leftClickHandler}
             >
-                <SlArrowLeft className='text-secondary/gray' size={30} />
+                <SlArrowLeft className='text-secondary/gray' size={iconsize} />
             </button>
-            <div className='relative w-[900px] h-[200px] justify-center items-center transform duration-1000 overflow-hidden '>
-                <button className={
-                            `absolute flex transform -translate-x-[420px] space-x-[20px]
-                            ${rightSlide && 'duration-1000 -translate-x-[201px]'}  
-                            ${leftSlide && 'duration-1000 -translate-x-[640px]'}
-                        `}>
+            <div className={`relative w-[200px] lg:w-[440px] xl:w-[640px] 2xl:w-[860px]  h-[200px] justify-center items-center transform duration-1000  overflow-hidden`}>
+                <div className={
+                    `absolute flex transform -translate-x-[440px]  space-x-[20px]
+                    ${rightSlide && 'duration-1000 -translate-x-[219px] '}  
+                    ${leftSlide && 'duration-1000  -translate-x-[660px] '}
+                    `}>
                     {featuredServicesArray?.map((item, index) => (
-                        <ServiceCard small={true} key={index} item={item}/>
+                        <ServiceCard small={true} key={index} item={item} />
                     ))}
-                </button>
+                </div>
             </div>
             <button
-                className='flex w-12 h-12 bg-primary/black z-10 rounded-full place-content-center items-center border-[1px] border-secondary/gray border-opacity-20'
+                className='flex p-1 md:p-2 bg-primary/black z-10 rounded-full place-content-center items-center border-[1px] border-secondary/gray border-opacity-20'
                 onClick={rightClickHandler}
             >
-                <SlArrowRight className='text-secondary/gray' size={30} />
+                <SlArrowRight className='text-secondary/gray' size={iconsize} />
             </button>
 
         </div>

@@ -28,9 +28,9 @@ const CartDropdown = () => {
         onClick={toggleIsCartOpen}
       >
       </div>
-      <div className={`absolute top-16 flex flex-col p-9 bg-primary/black w-[32rem] content-end transition-transform ease-in-out duration-500  ${isCartOpen ? '' : 'translate-x-full'}`}>
+      <div className={`absolute top-16 flex flex-col p-9 bg-primary/black md:w-[32rem] w-5/6 h-screen content-end transition-transform ease-in-out duration-500  ${isCartOpen ? '' : 'translate-x-full'}`}>
         {/* items container */}
-        <div className='border-[1px] border-secondary/gray border-opacity-20 h-[32rem] overflow overflow-y-auto overlay'>
+        <div className='border-[1px] border-secondary/gray border-opacity-20 md:h-[32rem] overflow overflow-y-auto overlay'>
           {cartItems.map((item) => (
             <CartItem key={item.purchased_item_id} cartItem={item} />
           ))}
@@ -38,9 +38,9 @@ const CartDropdown = () => {
         {/* price/button containers */}
         <div className="flex flex-col h-72">
           {/* price container */}
-          <div className="h-1/2 border-opacity-20 border-[1px] border-t-0 border-secondary/gray flex flex-row justify-between place-content-center items-center px-10">
-            <span className="text-3xl text-white">Item(s)</span>
-            <span className="text-3xl font-semibold text-white">${cartTotalValue.toFixed(2)}</span>
+          <div className="h-1/2 border-opacity-20 md:text-3xl border-[1px] border-t-0 border-secondary/gray flex flex-row justify-between place-content-center items-center px-10">
+            <span className=" text-white">Item(s)</span>
+            <span className=" font-semibold text-white">${cartTotalValue.toFixed(2)}</span>
           </div>
           {/* button container */}
           <div className="border-secondary/gray border-[1px] border-opacity-20 border-t-0 h-1/2 flex place-content-center items-center ">

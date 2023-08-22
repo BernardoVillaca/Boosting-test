@@ -4,7 +4,7 @@ import ReviewSection from './reviewSection'
 
 const Footer = () => {
   return (
-    <div className='flex flex-col w-screen h-[50vh] bg-primary/black items-center'>
+    <div className='lg:h-[50vh] bg-primary/black '>
        <ReviewSection/>
        <LinksSection/>
       </div>

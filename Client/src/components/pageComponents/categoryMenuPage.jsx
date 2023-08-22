@@ -38,26 +38,27 @@ const CategoryMenuPage = ({ backgroundImage, id }) => {
 
         <PageContainer image={backgroundImage}>
             <LeftContainer />
-            <MiddleContainer otherProps={'space-y-6'}>
+            <MiddleContainer >
                 {services &&
-                    <>
-                        <div className='h-14'>
+                    <div className=' space-y-4 '>
+                        <div className='h-14 pl-14  lg:pl-12  2xl:pl-0'>
                             <Title text={name} />
                         </div>
                         <PageSearchBar services={services} setSearchResults={setSearchResults} />
-                        <div className='flex flex-col space-y-4 h-32'>
+                        <div className='flex flex-col space-y-4 pl-14 pr-8  lg:pl-12  2xl:pl-0'>
                             {description?.map((item, index) => (
                                 <p key={index} className='text-white text-lg'>{item}</p>
                             ))}
                         </div>
-                        <div className='w-full place-content-center'>
-                            <div className='flex flex-wrap w-full h-[34rem] overflow-hidden overflow-y-auto overlay snap-y snap-mandatory'>
+                        <div className='flex w-full place-content-center md:place-content-start md:pl-9 2xl:pl-0 pb-4'>
+                            <div className='flex flex-wrap w-[17rem] lg:w-[34rem] xl:w-[51rem] 2xl:w-[68rem] h-[33rem] overflow-hidden overflow-y-auto overlay snap-y snap-mandatory '>
                                 {searchResults?.map((item, index) => (
                                     <ServiceCard key={index} item={item} />
                                 ))}
                             </div>
                         </div>
-                    </>
+
+                    </div>
                 }
             </MiddleContainer>
             <RightContainer logo={true} />

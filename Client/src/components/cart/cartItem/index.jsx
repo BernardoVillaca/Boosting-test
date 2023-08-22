@@ -10,7 +10,7 @@ const CartItem = ({ cartItem, orderPlaced }) => {
   const { region, currentRating, desiredRating, hours, extraOptionsSelected, coachLvl, customerRole, resourceAmount, startRating } = serviceInfo;
   const { classIcon, spec } = customerRole;
   const { removeItemFromCart } = useContext(AppContext);
- console.log(cartItem)
+
 
   return (
     <div className='flex flex-col w-[27.4rem] border-b-[1px]  border-secondary/gray border-opacity-20 h-[8rem] text-white'>

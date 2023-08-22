@@ -6,10 +6,11 @@ import { AppContext } from "../../context/appContext";
 
 
 const CartIcon = () => {
-  const { isCartOpen, setIsCartOpen, cartCount, isMenuOpen, setIsMenuOpen } = useContext(AppContext)
+  const { isCartOpen, setIsCartOpen, cartCount, isMenuOpen, setIsMenuOpen, isMobileMenuOpen, setIsMobileMenuOpen } = useContext(AppContext)
 
   const toggleIsCartOpen = () => {
     if (isMenuOpen) setIsMenuOpen(false)
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false)
     if (isCartOpen) {
       document.body.style.overflow = ""
       return setIsCartOpen(false)
